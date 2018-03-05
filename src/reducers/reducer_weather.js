@@ -5,7 +5,12 @@ export default function (state = [], action) {
     switch (action.type) {
         case FETCH_WEATHER:
             console.log(action);
-            return [action.payload.data, ...state];
+            if(action.payload.data!==undefined){
+                return [action.payload.data, ...state];
+            }else{
+                console.log('city not found :(');
+                return state;
+            }
     }
     return state;
 }
